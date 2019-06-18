@@ -6,9 +6,11 @@ MAINTAINER Alex Tucker <alex@floop.org.uk>
 ARG version_default
 ENV VERSION=$version_default
 WORKDIR /usr/src/
+COPY fix-https.patch /usr/src/
 RUN \
     apk add --no-cache curl bash libarchive-tools && \
-    curl -fsL https://github.com/Swirrl/csv2rdf/archive/${VERSION}.tar.gz | bsdtar -xf-
+    curl -fsL https://github.com/Swirrl/csv2rdf/archive/${VERSION}.tar.gz | bsdtar -xf- && \
+    patch csv2rdf-${VERSION}/src/csv2rdf/source.clj fix-https.patch
 RUN \
     cd /tmp && \
     curl -O https://download.clojure.org/install/linux-install-1.10.0.442.sh && \
