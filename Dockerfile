@@ -25,3 +25,6 @@ ENV VERSION=$version_default
 COPY --from=build /usr/src/csv2rdf-${VERSION}/target/csv2rdf-${VERSION}-standalone.jar /usr/local/share/java/csv2rdf.jar
 COPY csv2rdf /usr/local/bin/csv2rdf
 COPY log4j2.xml /usr/local/share/log4j2.xml
+RUN \
+    apk add --no-cache coreutils raptor2 pigz
+
