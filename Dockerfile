@@ -1,4 +1,4 @@
-ARG version_default=0.4.5
+ARG version_default=0.4.6
 
 FROM clojure:openjdk-8-lein-alpine AS build
 MAINTAINER Alex Tucker <alex@floop.org.uk>
